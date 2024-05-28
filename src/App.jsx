@@ -1,14 +1,14 @@
-import React from "react";
-import Header from "./components/Header";
-import Modal from "./components/Modal";
-import DisplayDetail from "./components/DisplayDetail";
-const App = () => {
+import { useState } from "react";
+import StudentInfo from "./Components/StudentInfo";
+
+function App() {
+  const [count, setCount] = useState(0);
+
   return (
-    <div>
-      <Header />
-      <DisplayDetail />
-    </div>
+    <>
+      <StudentInfo />
+    </>
   );
-};
+}
 
 export default App;

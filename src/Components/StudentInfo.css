@@ -1,0 +1,66 @@
+.container {
+  background-color: #fff; /* White background */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow effect */
+  padding: 20px;
+  margin: 20px auto; /* Center the card horizontally and add margin */
+  max-width: 600px; /* Limit the width of the card */
+}
+
+h1 {
+  text-align: center;
+  color: #333; /* Dark grey for text */
+  margin-bottom: 20px; /* Add space below the heading */
+}
+
+p {
+  text-align: center;
+  color: #666; /* Medium grey for supporting text */
+  margin-bottom: 20px; /* Add space below the paragraph */
+}
+
+.btn-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px; /* Add space below the button container */
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background-color: #ff7f50; /* Coral orange */
+  color: #fff; /* White text */
+  padding: 10px 20px; /* Increased padding for better visual appeal */
+  border-radius: 30px; /* Slightly rounded corners */
+  font-size: 16px; /* Slightly increased font size */
+  transition: background-color 0.3s ease; /* Smooth color transition */
+}
+
+button:hover {
+  background-color: #ff6347; /* Darker shade of coral on hover */
+}
+
+.student-list {
+  list-style-type: none; /* Remove default list styles */
+  padding: 0; /* Remove default padding */
+}
+
+.student-item {
+  background-color: #fff; /* White background for each student item */
+  border-radius: 8px; /* Rounded corners */
+  padding: 20px; /* Add padding around each student item */
+  margin-bottom: 15px; /* Add space between student items */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
+}
+
+.student-details {
+  color: #333; /* Dark grey text color */
+}
+
+.student-buttons {
+  margin-top: 10px; /* Add space above the buttons */
+}
+
+.student-buttons button {
+  margin-right: 10px; /* Add space between buttons */
+}
