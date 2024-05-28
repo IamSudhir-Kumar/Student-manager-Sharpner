@@ -1,88 +1,27 @@
-:root {
-  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.6; /* Slightly increased line-height for better readability */
-  font-weight: 400;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: none; /* Removed inherit to make it consistent */
-  transition: color 0.3s ease; /* Smooth transition for color */
-}
-
-a:hover {
-  color: #535bf2;
-}
-
-body {
-  margin: 0;
-  display: flex;
-  justify-content: center; /* Center content horizontally */
-  align-items: center; /* Center content vertically */
-  min-width: 320px;
-  min-height: 100vh;
-  background-color: inherit; /* Inherit background color from :root */
-  color: inherit; /* Inherit text color from :root */
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-  margin: 0; /* Ensure no margin for better alignment */
-  color: inherit; /* Inherit text color from :root */
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  color: rgba(255, 255, 255, 0.87); /* Ensure text color is visible */
-  cursor: pointer;
-  transition: border-color 0.25s, background-color 0.25s; /* Added smooth background color transition */
-}
-
-button:hover {
-  border-color: #646cff;
-  background-color: #333; /* Slightly lighter background on hover */
-}
-
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-  outline-offset: 2px; /* Added outline offset for better visibility */
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+.modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    right: auto;
+    bottom: auto;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 500px;
+    width: 100%;
   }
-
-  a:hover {
-    color: #747bff;
+  
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.75);
   }
-
-  body {
-    background-color: inherit; /* Ensure the background color is inherited */
-  }
-
-  button {
-    background-color: #f9f9f9;
-    color: #213547; /* Ensure text color is suitable for light background */
-  }
-
-  button:hover {
-    background-color: #e0e0e0; /* Lighter background on hover for light mode */
-  }
-}
+  

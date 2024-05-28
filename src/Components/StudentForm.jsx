@@ -1,97 +1,42 @@
-import React, { useState, useEffect, useRef } from "react";
-import "./StudentForm.css";
+import React, { useState, useContext, useEffect } from 'react';
+import { StudentContext } from '../context/StudentContext';
 
-const StudentForm = ({ open, onClose, addStudent, editingIndex, students }) => {
-  const [name, setName] = useState("");
-  const [number, setNumber] = useState("");
-  const [address, setAddress] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
-  const formRef = useRef(null);
+const StudentForm = ({ studentToEdit, setStudentToEdit, closeModal }) => {
+  const { addStudent, editStudent } = useContext(StudentContext);
+  const [student, setStudent] = useState({ id: null, name: '', phone: '', address: '' });
 
   useEffect(() => {
-    if (editingIndex !== null) {
-      const studentToEdit = students[editingIndex];
-      setName(studentToEdit.name);
-      setNumber(studentToEdit.number);
-      setAddress(studentToEdit.address);
+    if (studentToEdit) {
+      setStudent(studentToEdit);
     }
-  }, [editingIndex, students]);
+  }, [studentToEdit]);
 
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (formRef.current && !formRef.current.contains(event.target)) {
-        onClose();
-      }
-    };
-
-    if (open) {
-      document.addEventListener("mousedown", handleClickOutside);
-    } else {
-      document.removeEventListener("mousedown", handleClickOutside);
-    }
-
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [open, onClose]);
+  const handleChange = (e) => {
+    setStudent({ ...student, [e.target.name]: e.target.value });
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!name || !number || !address) {
-      setErrorMessage("All fields are required");
-      return;
+    if (student.id) {
+      editStudent(student);
+      setStudentToEdit(null);
+    } else {
+      addStudent({ ...student, id: Date.now() });
     }
-    const newStudent = { name, number, address };
-    addStudent(newStudent);
-    setName("");
-    setNumber("");
-    setAddress("");
-    setErrorMessage("");
-    onClose();
+    closeModal();
+    setStudent({ id: null, name: '', phone: '', address: '' });
   };
 
-  if (!open) return null;
-
   return (
-    <div className="modal-overlay">
-      <div className="modal" ref={formRef}>
-        <span className="close" onClick={onClose}>
-          &times;
-        </span>
-        <div className="modal-content">
-          <form onSubmit={handleSubmit}>
-            <div className="form-group">
-              <label htmlFor="Name">Name</label>
-              <input
-                type="text"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="number">Number</label>
-              <input
-                type="number"
-                value={number}
-                onChange={(e) => setNumber(e.target.value)}
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="address">Address</label>
-              <input
-                type="text"
-                value={address}
-                onChange={(e) => setAddress(e.target.value)}
-              />
-            </div>
-            {errorMessage && <p className="error-message">{errorMessage}</p>}
-            <button type="submit">
-              {editingIndex !== null ? "Update" : "Save"}
-            </button>
-          </form>
-        </div>
+    <form onSubmit={handleSubmit}>
+      <input type="text" name="name" value={student.name} onChange={handleChange} placeholder="Name" required />
+      <input type="text" name="phone" value={student.phone} onChange={handleChange} placeholder="Phone Number" required />
+      <input type="text" name="address" value={student.address} onChange={handleChange} placeholder="Address" required />
+      <div className="flex justify-end">
+        <button type="button" onClick={closeModal} className="bg-gray mr-2">Cancel</button>
+        <button type="submit" className="bg-blue">{student.id ? 'Edit' : 'Add'} Student</button>
       </div>
-    </div>
+    </form>
   );
 };
 
