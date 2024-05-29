@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { StudentProvider, StudentContext } from './context/StudentContext';
-import StudentForm from './components/StudentForm';
-import StudentCard from './components/StudentCard';
-import StudentCount from './components/StudentCount';
+import StudentForm from './Components/StudentForm';
+import StudentCard from './Components/StudentCard';
+import StudentCount from './Components/StudentCount';
 import Modal from 'react-modal';
 
 Modal.setAppElement('#root');
